@@ -11,15 +11,15 @@ homework of DATA620004
 ### 2.1. 激活函数
 
 在此次模型构建中,选择了三种不同的激活函数：sigmoid函数、ReLu函数、Leaky ReLu函数。具体表达式如下所示。
-sigmoid函数：$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+sigmoid函数：f(x) = 1 / (1 + exp(-x))
 ReLu函数： $$f(x) = \max(0,x)$$
 Leaky ReLu函数:  $$f(x) = \max(0.1x,x)$$
 ### 2.2. 反向传播，loss以及梯度的计算
 
-loss函数采用交叉熵函数加上L2正则化的形式,定义在类中的loss\_function函数。
+loss函数采用交叉熵函数加上L2正则化的形式,定义在类中的loss_function函数。
 
 关于梯度的计算，依次根据公式Downstream Gradient = Local Gradient*
-Upstream Gradient反向求解，最终求得loss function关于两个权重矩阵$w_1$和$w_2$的偏导。在Classifier.py文件的myclassifier类中，定义了函数grad(self, n\_sample, y\_pred, h ,mu)用于计算。
+Upstream Gradient反向求解，最终求得loss function关于两个权重矩阵w_1和w_2的偏导。在Classifier.py文件的myclassifier类中，定义了函数grad(self, n_sample, y_pred, h ,mu)用于计算。
 
 ### 2.3. 学习率下降策略
 
@@ -27,7 +27,7 @@ Upstream Gradient反向求解，最终求得loss function关于两个权重矩�
 
 ### 2.4. L2正则化
 
-正则化强度定义为$$\mu$$，代码中记为mu。正则化项在损失函数中定义为$$\frac12\Vert w_1 \Vert_2^2+\frac12\Vert w_2 \Vert_2^2 $$。此部分关于权重矩阵$$w_i$$的偏导为$$w_i \times \mu$$。
+正则化强度定义为\mu，代码中记为mu。
 
 ### 2.5.  优化器SGD
 
@@ -35,7 +35,7 @@ SGD是随机梯度下降，即随机选取初值进行梯度的计算和反向�
 
 ### 2.6. 保存模型
 
-训练后将得到的$$w_1$$和$$w_2$$保存在txt文件中，具体实现在myclassifier类中的save_data函数中。
+训练后将得到的w_1和w_2保存在txt文件中，具体实现在myclassifier类中的save_data函数中。
 
 
 #### 最终模型训练
@@ -46,7 +46,7 @@ SGD是随机梯度下降，即随机选取初值进行梯度的计算和反向�
 
 ## 测试
 
-运行model_display.py文件，导入模型输出分类的精度，并且绘制出权重矩阵$$w_1$$和$$w_2$$。
+运行model_display.py文件，导入模型输出分类的精度，并且绘制出权重矩阵w_1和w_2。
 
 
 
@@ -54,4 +54,4 @@ SGD是随机梯度下降，即随机选取初值进行梯度的计算和反向�
 
 ### 训练和测试步骤
 
-首先运行Classifier.py文件，进行参数查找，最终得到的最优参数组合会存在子文件夹data，包括学习率、隐藏层大小、正则化强度以及此时选择的激活函数。再执行plot.py文件，读取前面选择好的参数，并进行模型训练，绘制出模型训练和测试的loss曲线以及测试的accuracy曲线，并保存好训练的权重矩阵在子文件夹data中。最后执行model_display.py文件，会利用保存的参数组合以及权重矩阵重新生成模型，对测试集进行测试，输出分类精度。最后该文件会可视化权重矩阵$$w_1$$和$$w_2$$。
+首先运行Classifier.py文件，进行参数查找，最终得到的最优参数组合会存在子文件夹data，包括学习率、隐藏层大小、正则化强度以及此时选择的激活函数。再执行plot.py文件，读取前面选择好的参数，并进行模型训练，绘制出模型训练和测试的loss曲线以及测试的accuracy曲线，并保存好训练的权重矩阵在子文件夹data中。最后执行model_display.py文件，会利用保存的参数组合以及权重矩阵重新生成模型，对测试集进行测试，输出分类精度。最后该文件会可视化权重矩阵w_1和w_2。
