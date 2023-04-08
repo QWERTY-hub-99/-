@@ -11,7 +11,7 @@ homework of DATA620004
 ### 2.1. 激活函数
 
 在此次模型构建中,选择了三种不同的激活函数：sigmoid函数、ReLu函数、Leaky ReLu函数。具体表达式如下所示。
-sigmoid函数：$$\sigma(x) = \frac{1}{1 + exp(-x)}$$
+sigmoid函数：$$f(x) = \frac{1}{1 + exp(-x)}$$
 ReLu函数： $$f(x) = \max(0,x)$$
 Leaky ReLu函数:  $$f(x) = \max(0.1x,x)$$
 ### 2.2. 反向传播，loss以及梯度的计算
